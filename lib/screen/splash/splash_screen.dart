@@ -81,7 +81,9 @@ class _SplashScreenState extends State<SplashScreen> {
               Get.to(const HomeScreen(),)
             }
           else
-            {Get.offNamed(RouteHelper.signIn)}
-        });
+            // {Get.offNamed(RouteHelper.signIn)}
+      {Get.offNamed(RouteHelper.signIn)}
+
+    });
   }
 }

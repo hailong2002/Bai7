@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:timesheet/controller/auth_controller.dart';
+import 'package:timesheet/screen/sign_up/sign_up_screen.dart';
 import 'package:timesheet/utils/images.dart';
 
 import '../home/home_screen.dart';
@@ -51,7 +52,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                   child: Column(
                                     children: [
                                       const Text(
-                                        "Login To Your Account",
+                                        "Đăng nhập vào tài khoản",
                                         style: TextStyle(
                                             fontSize: 20,
                                             color: Colors.black,
@@ -71,7 +72,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                                       color:
                                                       Color.fromRGBO(244, 244, 244, 1)),
                                                   borderRadius: BorderRadius.circular(15)),
-                                              hintText: "Email",
+                                              hintText: "Tên đăng nhập",
                                               hintStyle: const TextStyle(
                                                   color: Colors.grey)),
                                         ),
@@ -101,7 +102,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                                             244, 244, 244, 1)),
                                                     borderRadius: BorderRadius.circular(15),
                                                   ),
-                                                  hintText: "Password",
+                                                  hintText: "Mật khẩu",
                                                   hintStyle: const TextStyle(
                                                       color:
                                                       Colors.grey)),
@@ -120,13 +121,26 @@ class _SignInScreenState extends State<SignInScreen> {
                                           child: Container(
                                             padding:
                                             const EdgeInsets.fromLTRB(40, 18, 40, 18),
-                                            child: const Text("Login",
+                                            child: const Text("Đăng nhập",
                                                 style: TextStyle(
                                                     fontSize: 16,
                                                     color: Color.fromRGBO(
                                                         191, 252, 226, 1.0))),
                                           ),
                                         ),
+                                      ),
+                                      const SizedBox(height: 50),
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          const Text("Chưa có tài khoản? ", style: TextStyle(fontSize: 20),),
+                                          TextButton(
+                                              onPressed: (){
+                                                Get.to(const SignUpScreen(),transition: Transition.size,duration: const Duration(milliseconds: 200),curve: Curves.easeIn);
+                                              },
+                                              child: const Text('Đăng ký', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),)
+                                          )
+                                        ],
                                       )
                                     ],
                                   ),

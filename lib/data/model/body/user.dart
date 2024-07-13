@@ -11,6 +11,9 @@ class User {
   String? firstName;
   String? lastName;
   String? password;
+  String? university;
+  int? year;
+  String? gender;
 
   User({
     this.id,
@@ -24,6 +27,9 @@ class User {
     this.firstName,
     this.lastName,
     this.password,
+    this.university,
+    this.year,
+    this.gender
   });
   User.fromJson(Map<String, dynamic> json) {
     // List<dynamic> listRoles = json['roles']??[];
@@ -39,6 +45,9 @@ class User {
     firstName = json['firstName'];
     lastName = json['lastName'];
     password = json['password'];
+    university = json['university'];
+    year = json['year'];
+    gender = json['gender'];
   }
   Map<String, dynamic> toJson() {
     return {
@@ -54,9 +63,9 @@ class User {
       'lastName':lastName,
       'password':password,
       // 'roles': roles?.map((roles) => roles.toJson()).toList(),
-      // 'university':university,
-      // 'year':year,
-      // 'gender':gender,
+      'university':university,
+      'year':year,
+      'gender':gender,
       // 'hasPhoto':hasPhoto
     };
   }

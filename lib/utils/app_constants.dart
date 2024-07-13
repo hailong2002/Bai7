@@ -12,6 +12,9 @@ class AppConstants {
   static const String SIGN_UP = '/mita/public/sign';
   static const String LOG_OUT = '/mita/oauth/logout';
   static const String GET_USER = '/mita/users/get-user-current';
+  static const String UPDATE_MYSELF = '/mita/users/update-myself';
+  static const String TRACKING = '/mita/tracking';
+
   // Shared Key
   static const String THEME = 'theme';
   static const String TOKEN = 'token';

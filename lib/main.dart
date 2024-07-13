@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:timesheet/data/api/api_client.dart';
 import 'package:timesheet/screen/splash/splash_screen.dart';
 import 'package:timesheet/theme/dark_theme.dart';
 import 'package:timesheet/theme/light_theme.dart';
@@ -17,6 +19,8 @@ import 'package:timesheet/utils/messages.dart';
 import 'package:url_strategy/url_strategy.dart';
 
 import 'controller/localization_controller.dart';
+
+import 'controller/user_controller.dart';
 import 'firebase_options.dart';
 import 'helper/get_di.dart' as di;
 import 'helper/notification_helper.dart';
@@ -48,7 +52,6 @@ Future<void> main() async {
   // } catch (e) {}
 
   Map<String, Map<String, String>> _languages = await di.init();
-
   runApp(MyApp(languages: _languages));
 }
 

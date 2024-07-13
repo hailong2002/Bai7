@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:timesheet/screen/sign_in/sign_in_screen.dart';
+import 'package:timesheet/screen/sign_up/sign_up_screen.dart';
 import '../screen/home/home_screen.dart';
 import '../screen/splash/splash_screen.dart';
 
@@ -26,6 +27,7 @@ class RouteHelper {
     GetPage(name: splash, page: () => const SplashScreen()),
     GetPage(name: signIn, page: () => const SignInScreen()),
     GetPage(name: home, page: () => const HomeScreen()),
+    GetPage(name: signUp, page: () => const SignUpScreen())
 
   ];
 

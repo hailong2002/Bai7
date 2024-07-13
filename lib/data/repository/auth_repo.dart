@@ -16,6 +16,37 @@ class AuthRepo {
 
   AuthRepo({required this.apiClient, required this.sharedPreferences});
 
+  Future<Response> signup( {required String firstName, required String lastName,
+    required String email, required String universityName, required String gender,
+    required DateTime dob, required int studentYear, required String username,
+    required String password})  async{
+    var token = "Basic Y29yZV9jbGllbnQ6c2VjcmV0";
+    var languageCode = sharedPreferences.getString(AppConstants.LANGUAGE_CODE);
+    Map<String, String> _header = {
+      'Content-Type': 'application/json',
+      'Cookie': 'JSESSIONID=2D15EBBD50AE0B630911916C2C89241E',
+      AppConstants.LOCALIZATION_KEY:
+      languageCode ?? AppConstants.languages[0].languageCode,
+      'Authorization': '$token'
+    };
+
+    return await apiClient.postData(
+        AppConstants.SIGN_UP,
+        {
+          'firstName': firstName,
+          'lastName': lastName,
+          'email': email,
+          'university': universityName,
+          'gender': gender,
+          'dob': dob.toIso8601String(),
+          'year': studentYear,
+          'username': username,
+          'password': password,
+          "active": true,
+          "displayName": username,
+        }, _header);
+  }
+
   Future<Response> login(
       {required String username, required String password}) async {
     //header login

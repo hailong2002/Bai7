@@ -9,10 +9,12 @@ import 'package:timesheet/controller/auth_controller.dart';
 import 'package:timesheet/data/repository/splash_repo.dart';
 import '../controller/localization_controller.dart';
 import '../controller/splash_controller.dart';
+import '../controller/user_controller.dart';
 import '../data/api/api_client.dart';
 import '../data/model/language_model.dart';
 import '../data/repository/auth_repo.dart';
 import '../data/repository/language_repo.dart';
+import '../data/repository/user_repo.dart';
 import '../theme/theme_controller.dart';
 import '../utils/app_constants.dart';
 
@@ -33,11 +35,15 @@ Future<Map<String, Map<String, String>>> init() async {
 
   Get.lazyPut(
           () => SplashRepo(apiClient: Get.find()));
+  Get.lazyPut(
+          () => UserRepo(apiClient: Get.find(), sharedPreferences: Get.find()));
   // Controller
   Get.lazyPut(() => ThemeController(sharedPreferences: Get.find()));
   Get.lazyPut(() => LocalizationController(sharedPreferences: Get.find()));
   Get.lazyPut(() => SplashController(repo: Get.find()));
   Get.lazyPut(() => AuthController(repo: Get.find()));
+  Get.lazyPut(() => UserController(repo: Get.find()));
+
 
   if (await Permission.location.isGranted) {
     final newLocalData = await Geolocator.getCurrentPosition(

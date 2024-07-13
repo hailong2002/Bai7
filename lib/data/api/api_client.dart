@@ -73,14 +73,16 @@ class ApiClient extends GetxService {
       }
       Http.Response response = await Http.post(
         Uri.parse(appBaseUrl + uri),
-        body: body,
-        headers: _mainHeaders,
+        body: requestBody,
+        headers: headers,
       ).timeout(Duration(seconds: timeoutInSeconds));
       return handleResponse(response, uri);
     } catch (e) {
+      print(e);
       return Response(statusCode: 1, statusText: noInternetMessage);
     }
   }
+
   Future<Response> postDataLogin(String uri, dynamic body,
       Map<String, String>? headers) async {
     try {

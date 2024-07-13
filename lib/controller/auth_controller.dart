@@ -13,6 +13,7 @@ class AuthController extends GetxController implements GetxService {
   bool _loading = false;
   User _user = User();
 
+
   bool get loading => _loading;
   User get user => _user;
 
@@ -30,8 +31,25 @@ class AuthController extends GetxController implements GetxService {
     }
     _loading = false;
     update();
+    print(response);
     return response.statusCode!;
   }
+
+  Future<int> signup( String firstName, String lastName,String email,
+  String universityName, String gender,DateTime dob, int studentYear,
+  String username,String password) async{
+    _loading = true;
+    update();
+    Response response = await repo.signup(firstName: firstName, lastName: lastName,
+        email: email, universityName: universityName, gender: gender, dob: dob,
+        studentYear: studentYear, username: username, password: password);
+
+    _loading = false;
+    update();
+    return response.statusCode!;
+  }
+
+
   Future<int> logOut() async {
     _loading = true;
     Response response = await repo.logOut();
@@ -56,6 +74,10 @@ class AuthController extends GetxController implements GetxService {
     }
     return response.statusCode!;
   }
+
+
+
+
   void clearData(){
     _loading = false;
     _user = User();
